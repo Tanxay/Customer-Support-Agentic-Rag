@@ -1,0 +1,23 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Environment
+.env
+
+# Milvus/Docker
+volumes/
+docker-compose.yml 
+# (Wait, maybe we want docker-compose.yml? Yes. But NOT volumes data)
+
+# IDE
+.vscode/
+.idea/
+
+# User Data (Don't push private docs)
+data/

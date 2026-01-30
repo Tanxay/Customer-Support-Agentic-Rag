@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+streamlit
+pymilvus>=2.4.0
+langchain-community
+langchain-core
+langgraph
+pypdf
+openpyxl
+pandas
+python-multipart
+rank_bm25
+# sentence-transformers
