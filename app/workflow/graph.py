@@ -1,9 +1,9 @@
 from typing import TypedDict, List
 from langgraph.graph import StateGraph, END
 
-from app.agents.router_agent import RouterAgent
-from app.agents.retrieval_agent import RetrievalAgent
-from app.agents.answer_agent import AnswerAgent
+from app.agents.router import RouterAgent
+from app.agents.retrieval import RetrievalAgent
+from app.agents.answer import AnswerAgent
 from langchain_core.documents import Document
 
 # Define State

@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
 import uvicorn
-from app.graph import app_graph
+from app.workflow.graph import app_graph
 
 app = FastAPI(title="Customer Support Agent API")
 

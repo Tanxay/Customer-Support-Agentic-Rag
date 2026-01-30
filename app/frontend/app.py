@@ -32,7 +32,7 @@ with st.sidebar:
                 # Ideally we call an API endpoint for ingestion, but for now we run script via shell or import
                 # For simplicity in this demo, we'll shell out
                 import subprocess
-                subprocess.run(["python", "-m", "app.agents.ingest"], check=True)
+                subprocess.run(["python", "-m", "app.ingestion.ingest"], check=True)
             st.success("Ingestion Complete!")
         else:
             st.warning("Please upload files first.")
