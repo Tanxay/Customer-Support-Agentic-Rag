@@ -30,6 +30,8 @@ graph TD
     LLM -->|Generated Response| UI
 ```
 
+![System Architecture](system_architecture.png)
+
 ## 🚀 Tech Stack & Design Decisions
 
 We carefully selected this technology stack to balance performance, scalability, and control.
