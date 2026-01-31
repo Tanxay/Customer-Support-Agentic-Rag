@@ -11,6 +11,7 @@ class AnswerAgent:
             ("system", """You are a helpful assistant. Use the following context to answer the user's question.
             If the answer is not in the context, say "I couldn't find the answer in the provided documents."
             Always cite the source (filename) if possible.
+            Be concise. Do not repeat yourself.
             
             Context:
             {context}
@@ -30,8 +31,8 @@ class AnswerAgent:
             print(f"Answer generated.")
             return result
         except Exception as e:
-            print(f"Generation error: {e}")
-            return "Sorry, I encountered an error generating the answer."
+            print(f"Error generating answer: {e}")
+            return "I apologize, but I encountered an error while converting your request into an answer. Please check if the Ollama model is running."
 
 if __name__ == "__main__":
     # Test with dummy context

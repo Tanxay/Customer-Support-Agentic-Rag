@@ -59,7 +59,8 @@ class RetrievalAgent:
                 print(f"Vector Search found {len(docs)} documents.")
             return docs
         except Exception as e:
-            print(f"Retrieval error: {e}")
+            print(f"CRITICAL RETRIEVAL ERROR: {e}")
+            # Do not crash, return empty list so AnswerAgent can try (or fail gracefully with 'no context')
             return []
 
 if __name__ == "__main__":

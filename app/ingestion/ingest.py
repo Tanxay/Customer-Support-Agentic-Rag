@@ -1,6 +1,7 @@
 import os
 import pandas as pd
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader, TextLoader, Docx2txtLoader, CSVLoader
+from pptx import Presentation
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import Milvus
@@ -55,6 +56,70 @@ def ingest_documents():
             except Exception as e:
                 print(f"Error loading Excel {filename}: {e}")
 
+        # Process Text Files
+        elif filename.endswith(".txt"):
+            print(f"Loading Text File: {filename}")
+            try:
+                loader = TextLoader(file_path, encoding="utf-8")
+                docs = loader.load()
+                # Split text
+                text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+                splits = text_splitter.split_documents(docs)
+                for split in splits:
+                    split.metadata["source"] = filename
+                    split.metadata["type"] = "text"
+                all_documents.extend(splits)
+            except Exception as e:
+                print(f"Error loading Text File {filename}: {e}")
+
+        # Process CSV
+        elif filename.endswith(".csv"):
+            print(f"Loading CSV: {filename}")
+            try:
+                loader = CSVLoader(file_path=file_path)
+                docs = loader.load()
+                # CSV loader creates one doc per row usually, so we might just extend
+                for doc in docs:
+                    doc.metadata["source"] = filename
+                    doc.metadata["type"] = "csv"
+                all_documents.extend(docs)
+            except Exception as e:
+                print(f"Error loading CSV {filename}: {e}")
+
+        # Process Word (DOCX)
+        elif filename.endswith(".docx") or filename.endswith(".doc"):
+            print(f"Loading Word Doc: {filename}")
+            try:
+                loader = Docx2txtLoader(file_path)
+                docs = loader.load()
+                text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+                splits = text_splitter.split_documents(docs)
+                for split in splits:
+                    split.metadata["source"] = filename
+                    split.metadata["type"] = "docx"
+                all_documents.extend(splits)
+            except Exception as e:
+                print(f"Error loading DOCX {filename}: {e}")
+
+        # Process PowerPoint (PPTX)
+        elif filename.endswith(".pptx") or filename.endswith(".ppt"):
+            print(f"Loading PowerPoint: {filename}")
+            try:
+                prs = Presentation(file_path)
+                text_content = ""
+                for slide in prs.slides:
+                    for shape in slide.shapes:
+                        if hasattr(shape, "text"):
+                            text_content += shape.text + "\n"
+                
+                doc = Document(page_content=text_content, metadata={"source": filename, "type": "pptx"})
+                
+                text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+                splits = text_splitter.split_documents([doc])
+                all_documents.extend(splits)
+            except Exception as e:
+                print(f"Error loading PPTX {filename}: {e}")
+
     if not all_documents:
         print("No documents found to ingest!")
         return
@@ -67,6 +132,14 @@ def ingest_documents():
         base_url=config.OLLAMA_BASE_URL
     )
     
+    # Sanitize metadata for Milvus (Auto-schema prefers consistent types)
+    for doc in all_documents:
+        new_metadata = {}
+        for k, v in doc.metadata.items():
+            if isinstance(v, (str, int, float, bool)):
+                new_metadata[k] = str(v)  # Convert everything to string for safety
+        doc.metadata = new_metadata
+
     print(f"Indexing to Milvus collection '{config.COLLECTION_NAME}'...")
     try:
         Milvus.from_documents(

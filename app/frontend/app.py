@@ -3,6 +3,13 @@ import requests
 import os
 import shutil
 
+import time
+
+def stream_data(text):
+    for word in text.split(" "):
+        yield word + " "
+        time.sleep(0.04)
+
 # Config
 API_URL = "http://localhost:8000/query"
 DATA_DIR = "data"
@@ -15,7 +22,16 @@ st.markdown("Ask questions about your documents (PDF) or data (Excel).")
 # Sidebar - File Upload
 with st.sidebar:
     st.header("📂 Data Management")
-    uploaded_files = st.file_uploader("Upload PDF or Excel", type=["pdf", "xlsx", "xls"], accept_multiple_files=True)
+    uploaded_files = st.file_uploader(
+        "Upload your Knowledge Base", 
+        type=["pdf", "xlsx", "xls", "txt", "csv", "pptx", "docx"], 
+        accept_multiple_files=True
+    )
+    
+    existing_files = os.listdir(DATA_DIR) if os.path.exists(DATA_DIR) else []
+    
+    if existing_files:
+        st.info(f"📚 {len(existing_files)} files available in Knowledge Base.")
     
     if st.button("Ingest Files"):
         if uploaded_files:
@@ -27,15 +43,15 @@ with st.sidebar:
                 with open(file_path, "wb") as f:
                     f.write(uploaded_file.getbuffer())
                 st.success(f"Saved: {uploaded_file.name}")
-            
+        
+        # Ingest if files exist (either uploaded or pre-existing)
+        if existing_files or uploaded_files:
             with st.spinner("Ingesting documents into Milvus (this may take a while)..."):
-                # Ideally we call an API endpoint for ingestion, but for now we run script via shell or import
-                # For simplicity in this demo, we'll shell out
                 import subprocess
                 subprocess.run(["python", "-m", "app.ingestion.ingest"], check=True)
             st.success("Ingestion Complete!")
         else:
-            st.warning("Please upload files first.")
+            st.warning("No files found to ingest. Please upload data.")
 
 # Chat Interface
 if "messages" not in st.session_state:
@@ -60,7 +76,7 @@ if prompt := st.chat_input("What would you like to know?"):
                     datasource = data.get("datasource", "unknown")
                     docs = data.get("documents", [])
                     
-                    st.markdown(answer)
+                    st.write_stream(stream_data(answer))
                     
                     if docs:
                         with st.expander(f"📚 Sources ({datasource})"):
