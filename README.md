@@ -7,7 +7,7 @@ A high-performance, privacy-focused **Agentic RAG (Retrieval-Augmented Generatio
 
 ## 🏗️ System Architecture
 
-```mermaid
+
 graph TD
     User[User] -->|Interacts| UI[Streamlit Frontend]
     UI -->|HTTP POST /query| API[FastAPI Backend]
@@ -26,7 +26,7 @@ graph TD
         BM25 -->|Chunks| Answer
     end
     
-    Answer -->|Context + Query| LLM[Ollama (Llama 3.2)]
+    Answer -->|Context + Query| LLM["Ollama (Llama 3.2)"]
     LLM -->|Generated Response| UI
 ```
 
@@ -122,6 +122,9 @@ streamlit run app/frontend/app.py
     *   *"What is the refund policy?"* → Routes to Vector Search.
     *   *"Lookup error code E-505"* → Routes to Excel Data.
     *   *"Hello"* → handled by General Chat.
+
+
+
 
 ---
 *Built with ❤️ using Agentic AI.*
