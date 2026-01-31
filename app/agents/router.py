@@ -12,12 +12,12 @@ class RouterAgent:
             
             Available Data Sources:
             1. 'vector_store': Use this for questions about policies, procedures, manuals, or general text found in PDF/Text documents.
-            2. 'excel_sheet': Use this for questions about specific data rows, error codes, inventory numbers, or structured tabular data.
+            2. 'structured_query': Use this ONLY for counting, statistics, aggregation, or database queries (e.g. "How many orders?", "Average price?", "List all orders").
             3. 'general_chat': Use this for greetings, or questions that don't look like they need external data.
             
             Return ONLY a JSON object with the following format:
             {{
-                "datasource": "vector_store" | "excel_sheet" | "general_chat",
+                "datasource": "vector_store" | "structured_query" | "general_chat",
                 "reasoning": "brief explanation"
             }}
             """),
