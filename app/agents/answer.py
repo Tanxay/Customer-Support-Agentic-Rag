@@ -28,7 +28,7 @@ class AnswerAgent:
         print(f"Generating answer for: {question}")
         try:
             result = self.chain.invoke({"question": question, "context": context_text})
-            print(f"Answer generated.")
+            print(f"Answer generated: {result}")
             return result
         except Exception as e:
             print(f"Error generating answer: {e}")

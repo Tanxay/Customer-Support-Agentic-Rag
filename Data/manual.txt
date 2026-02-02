@@ -1,0 +1,18 @@
+HP Envy 6000 Series - User Manual / Troubleshooting
+
+1. Light Status
+- Solid White: Printer is ready.
+- Blinking White: Printing in progress.
+- Solid Amber: Printer is initializing or in sleep mode.
+- Blinking Amber: Attention required (Paper jam, Out of paper, or Cover open).
+- Fast Blinking Amber: Serious error state. Turn printer off and on again.
+- Blue Light: Wi-Fi connecting or active.
+
+2. Common Actions
+- Print Test Page: Hold 'cancel' and 'resume' buttons for 3 seconds.
+- Reset Wi-Fi: Hold the 'Wi-Fi' button on the back for 5 seconds until the light blinks blue.
+
+3. Error Codes (See orders.db for more details)
+- E1: Paper width mismatch.
+- E3: Carriage jam.
+- E4: Paper jam.

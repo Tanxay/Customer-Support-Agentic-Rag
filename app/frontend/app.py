@@ -53,6 +53,10 @@ with st.sidebar:
         else:
             st.warning("No files found to ingest. Please upload data.")
 
+    if st.button("Clear Chat"):
+        st.session_state.messages = []
+        st.rerun()
+
 # Chat Interface
 if "messages" not in st.session_state:
     st.session_state.messages = []

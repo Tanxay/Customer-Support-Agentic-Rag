@@ -57,6 +57,10 @@ class RetrievalAgent:
             else:
                 docs = self.milvus_retriever.invoke(query)
                 print(f"Vector Search found {len(docs)} documents.")
+            
+            for i, doc in enumerate(docs):
+                print(f"Doc {i}: {doc.page_content[:200]}...")
+
             return docs
         except Exception as e:
             print(f"CRITICAL RETRIEVAL ERROR: {e}")

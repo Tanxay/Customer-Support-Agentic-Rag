@@ -1,0 +1,124 @@
+# DOC_ID: HP_ENVY_6000_SERIES_MASTER_GUIDE
+# TITLE: HP ENVY 6000 All-in-One Printer Series: Specifications, Setup, and Troubleshooting
+# TAGS: printer, hp, envy, 6000, 6000e, 6400, setup, troubleshooting, error codes, lights, wifi, specifications
+# LAST_UPDATED: 2024-05-20
+
+[SECTION: PRODUCT_OVERVIEW]
+Model Name: HP ENVY 6000 All-in-One Printer Series (includes 6000e, 6020, 6055, etc.)
+Product Type: All-in-One Inkjet Printer (Print, Scan, Copy)
+Target Audience: Home and Home Office
+Key Features: 
+- Automatic 2-sided printing (Duplex)
+- Borderless printing (up to 8.5 x 11 inches)
+- Self-healing dual-band Wi-Fi (2.4 GHz and 5 GHz)
+- HP Smart App integration
+- Status Edge Lighting (smart lighting bar)
+- Mobile Fax (send only, via HP Smart App)
+
+[SECTION: HARDWARE_SPECIFICATIONS]
+Print Technology: HP Thermal Inkjet
+Print Speed (Black): Up to 10 ppm (ISO)
+Print Speed (Color): Up to 7 ppm (ISO)
+First Page Out (Black): As fast as 18 seconds
+Print Resolution (Black): Up to 1200 x 1200 rendered dpi
+Print Resolution (Color): Up to 4800 x 1200 optimized dpi
+Processor Speed: 800 MHz
+Memory: 256 MB DDR3
+Monthly Duty Cycle: Up to 1000 pages
+Recommended Monthly Volume: 100 to 400 pages
+
+[SECTION: PAPER_HANDLING]
+Input Tray Capacity: Up to 100 sheets
+Output Tray Capacity: Up to 25 sheets
+Supported Media Sizes: 
+- Standard: Letter, 4x6 in, 5x7 in, 8x10 in, No. 10 Envelopes
+- Metric: A4, A5, B5, DL, C6, A6
+Supported Media Types: Plain Paper, HP Photo Papers, HP Matte/Glossy Brochure Paper, Recycled Paper
+Media Weight Supported:
+- Letter/A4: 16 to 24 lb (60 to 90 g/m²)
+- Photo Paper: Up to 80 lb (300 g/m²)
+- Cards: Up to 53 lb (200 g/m²)
+
+[SECTION: CONNECTIVITY]
+Standard Ports:
+- 1 Hi-Speed USB 2.0 (Type B)
+- Wi-Fi 802.11ac (Dual Band)
+Wireless Capabilities: Yes, built-in Wi-Fi 802.11b/g/n
+Mobile Printing Services:
+- HP Smart App
+- Apple AirPrint
+- Chrome OS
+- Mopria Certified
+
+[SECTION: INK_CARTRIDGES]
+Cartridge System: 2 Cartridges (1 Black, 1 Tri-color)
+Cartridge Numbers (Region Dependent - Check specific sub-model):
+- North America: HP 67 Black, HP 67 Tri-color
+- Europe/Middle East: HP 305 Black, HP 305 Tri-color
+- Asia Pacific: HP 805 Black, HP 805 Tri-color
+Instant Ink Eligible: Yes
+
+[SECTION: CONTROL_PANEL_AND_LIGHTS]
+Button Layout:
+- Power Button (Back of printer)
+- Wi-Fi Reset Button (Back of printer)
+- Information Button (i): Prints information page
+- Resume/Cancel Button (X): Resumes job or cancels current operation
+- Copy Buttons: Black Copy (right), Color Copy (left)
+
+Edge Lighting Status Codes:
+1. Pulse Purple: Wireless setup mode (ready to connect).
+2. Pulse Blue: Connecting to Wi-Fi.
+3. Solid Blue: Connected to Wi-Fi/Ready.
+4. Solid Amber (Large Bar): Printer warning or blocking error (check paper/ink).
+5. Fast Blinking Amber: Serious error (requires restart).
+6. Pulse White: Printing in progress.
+7. Green Glow (Center): Updating firmware.
+8. Rotating Blue: Wi-Fi Direct is active.
+
+[SECTION: SETUP_INSTRUCTIONS]
+Process:
+1. Remove all tape and cardboard from the printer (check inside cartridge access door).
+2. Plug into power source. The printer turns on automatically.
+3. Wait for the printer lighting to turn Purple (Setup Mode).
+4. Download the "HP Smart" app on a mobile device or PC (123.hp.com).
+5. Open HP Smart and click "Add Printer" (+).
+6. Follow on-screen prompts to connect printer to Wi-Fi.
+7. Install ink cartridges when prompted by the app.
+8. Load paper and perform alignment.
+
+Wi-Fi Reset (If printer is not found):
+- Locate the Wi-Fi button on the back of the printer.
+- Press and hold for at least 5 seconds until the Edge Lighting pulses purple.
+
+[SECTION: TROUBLESHOOTING_COMMON_ERRORS]
+Error Code E0: Unusable Cartridge. 
+- Fix: Reseat cartridges, clean contacts, or replace.
+Error Code E1 / E2: Paper Size Mismatch.
+- Fix: Ensure paper size settings in software match the paper loaded.
+Error Code E3: Paper Jam (Carriage Jam).
+- Fix: Open cartridge access door, clear jammed paper from the path, close door, press Resume.
+Error Code E4: Paper Jam (Input).
+- Fix: Check input tray for jammed paper.
+Error Code E9: Firmware Update Error.
+- Fix: Restart printer and retry update via HP Smart app.
+
+[SECTION: MAINTENANCE]
+Cleaning Printhead:
+- Perform via HP Smart App > Printer Settings > Print Quality Tools > Clean Printhead.
+Aligning Printhead:
+- Perform via HP Smart App > Printer Settings > Print Quality Tools > Align Printhead.
+Scanner Cleaning:
+- Use a soft, lint-free cloth and glass cleaner on the scanner glass to remove streaks.
+
+[SECTION: FAQ]
+Q: Does the HP Envy 6000 scan double-sided automatically?
+A: No, the ADF (if equipped on specific sub-models like 6400) is usually simplex. The 6000 series typically uses a flatbed scanner and does not support automatic duplex scanning, only manual.
+
+Q: How do I print a test page?
+A: Press and hold the Information (i) button and the Resume (X) button simultaneously for 3 seconds.
+
+Q: Why is my printer offline?
+A: Check if the Edge Light is blue. If not, press the Wi-Fi button on the back to reconnect. Restart the router and printer.
+
+[END_OF_FILE]

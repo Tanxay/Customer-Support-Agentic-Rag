@@ -12,6 +12,10 @@ def ingest_documents():
     data_dir = "data"
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)
+    
+    print(f"Scanning directory: {os.path.abspath(data_dir)}")
+    files = os.listdir(data_dir)
+    print(f"Found files: {files}")
         
     all_documents = []
     
@@ -21,6 +25,9 @@ def ingest_documents():
         
         # Process PDF
         if filename.endswith(".pdf"):
+            print(f"Skipping PDF (Corrupt): {filename}")
+            continue
+            # was: if filename.endswith(".pdf"):
             print(f"Loading PDF: {filename}")
             try:
                 loader = PyPDFLoader(file_path)

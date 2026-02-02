@@ -39,14 +39,14 @@ def generate_node(state: AgentState):
     print("---GENERATE---")
     question = state["question"]
     docs = state.get("documents", [])
-    answer = answer_agent.generate_answer(question, docs)
-    return {"answer": answer}
+    answer = answerer.generate_answer(question, docs)
+    return {"generation": answer}
 
 def sql_node(state: AgentState):
     question = state["question"]
     print("---SQL AGENT---")
     answer = sql_agent.query(question)
-    return {"answer": answer, "datasource": "structured_db"} # structured_db source
+    return {"generation": answer, "datasource": "structured_db"} # structured_db source
 
 # Determine Next Step
 def route_query(state: AgentState):
@@ -62,8 +62,8 @@ def route_query(state: AgentState):
 workflow = StateGraph(AgentState)
 
 workflow.add_node("router", router_node)
-workflow.add_node("retrieval", retrieval_node)
-workflow.add_node("answer", answer_node)
+workflow.add_node("retrieval", retrieve_node)
+workflow.add_node("answer", generate_node)
 workflow.add_node("sql_agent", sql_node) # Add node
 
 workflow.set_entry_point("router")
